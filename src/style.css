@@ -8,12 +8,12 @@ table {
     text-align: center;
     vertical-align: middle;
     min-width: 65%;
-    margin-bottom: 1em;
+    margin: 0.3em auto;
 }
 
 caption {
     font-size: 24px;
-    text-align: left;
+    text-align: center;
     color: #333;
     margin-bottom: 16px;
 }
@@ -29,7 +29,7 @@ thead {
 th,
 td {
     border: 1px solid black;
-    padding: 10px;
+    padding: 15px;
 }
 
 thead th {
@@ -40,10 +40,12 @@ thead th {
 }
 
 tbody tr:nth-child(odd) {
+    text-transform: uppercase;
     background-color: #fff;
 }
 
 tbody tr:nth-child(even) {
+    text-transform: uppercase;
     background-color: #eee;
 }
 
@@ -58,7 +60,7 @@ tbody tr:nth-child(even) {
     /* Some padding */
     cursor: pointer;
     /* Pointer/hand icon */
-    float: left;
+    /* float: left; */
     /* Float the buttons side by side */
     pointer-events: all;
 }
@@ -87,4 +89,18 @@ tbody tr:nth-child(even) {
 .btn-group label {
     display: inline-block;
     margin: 0.6em 1em;
+}
+
+div.section-one {
+    text-align: center;
+    vertical-align: middle;
+    min-width: 65%;
+    margin: 1em auto;
+
+}
+
+div.loader>img {
+    width: 200px;
+    height: 200px;
+    position: relative;
 }
