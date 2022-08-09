@@ -52,6 +52,30 @@ const traverseTable = (n: number) => {
   label.innerText = `Showing Page ${n}`;
 };
     
+/**
+ * Handle Next Page
+ * @param pageNumber 
+ * @returns void
+ */
+const fetchNext = async (pageNumber: number) => {
+  if (results) {
+    table.removeChild(document.getElementsByTagName("tbody")[0]);
+    if (results![pageNumber]) {
+      traverseTable(pageNumber);
+      btn_next.setAttribute("data-nextbtn", `${pageNumber + 1}`);
+      btn_prev.setAttribute("data-prevbtn", `${pageNumber - 1}`);
+      btn_prev.disabled = false;
+      return;
+      
+    }
+    await fetchResource(pageNumber).then(() => {
+      if (results) {
+        traverseTable(pageNumber);
+        btn_next.setAttribute("data-nextbtn", `${pageNumber + 1}`);
+        btn_prev.setAttribute("data-prevbtn", `${pageNumber - 1}`);
+      }
+    });
+  }
 };
 
 document.addEventListener('DOMContentLoaded', startApp);
