@@ -13,6 +13,5 @@ export type ResponseDataType = {
     gender: "male" | "female";
     id: string;
     row: number;
-   
     age: number;
 };
