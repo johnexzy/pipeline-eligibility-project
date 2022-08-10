@@ -2,18 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paginated Data</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
     <table>
-        <caption>paginated random data of app users</caption>
+        <caption>
+            paginated random data of app users
+        </caption>
         <thead>
             <tr>
                 <td># No.</td>
@@ -21,39 +22,20 @@
                 <td>Age</td>
             </tr>
         </thead>
-        <tbody data-sink>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
+        
 
-    <div class="btn-group">
-        <button data-prevbtn>Previous</button>
-        <button data-nextbtn>Next</button>
-        <label data-pageview></label>
+    </table>
+    <div class="section-one">
+        <div class="loader">
+            <img id="img_loader" src="./assets/loader.gif" alt="">
+        </div>
+        <div class="btn-group" id="btn-group">
+            <button data-prevbtn="0" disabled="true" id="btn-prevbtn">
+                Previous
+            </button>
+            <button data-nextbtn="2" id="btn-nextbtn">Next</button>
+            <label data-pageview></label>
+        </div>
     </div>
 
     <script type="module" src="app.ts"></script>

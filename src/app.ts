@@ -51,8 +51,8 @@ const traverseTable = (n: number) => {
   }
   label.innerText = `Showing Page ${n}`;
 };
-    
-/**
+
+ /**
  * Handle Next Page
  * @param pageNumber 
  * @returns void
@@ -111,5 +111,3 @@ btn_prev.addEventListener("click", () =>
   fetchPrev(parseInt(btn_prev.getAttribute("data-prevbtn")!))
 );
 document.addEventListener("DOMContentLoaded", startApp);
-
-document.addEventListener('DOMContentLoaded', startApp);
