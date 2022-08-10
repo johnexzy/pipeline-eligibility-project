@@ -27,7 +27,7 @@ const img = document.querySelector("#img_loader") as HTMLImageElement;
  */
 const traverseTable = (n: number) => {
   // creates <table> and <tbody> elements
- 
+
   const tableBody = table.createTBody();
   const firstPage = results![n];
   const keys = ["row", "gender", "age"];
@@ -52,24 +52,24 @@ const traverseTable = (n: number) => {
   label.innerText = `Showing Page ${n}`;
 };
 
- /**
+/**
  * Handle Next Page
- * @param pageNumber 
+ * @param pageNumber
  * @returns void
  */
 const fetchNext = async (pageNumber: number) => {
   if (results) {
-    table.removeChild(document.getElementsByTagName("tbody")[0]);
     if (results![pageNumber]) {
+      table.removeChild(document.getElementsByTagName("tbody")[0]);
       traverseTable(pageNumber);
       btn_next.setAttribute("data-nextbtn", `${pageNumber + 1}`);
       btn_prev.setAttribute("data-prevbtn", `${pageNumber - 1}`);
       btn_prev.disabled = false;
       return;
-      
     }
     await fetchResource(pageNumber).then(() => {
       if (results) {
+        table.removeChild(document.getElementsByTagName("tbody")[0]);
         traverseTable(pageNumber);
         btn_next.setAttribute("data-nextbtn", `${pageNumber + 1}`);
         btn_prev.setAttribute("data-prevbtn", `${pageNumber - 1}`);
@@ -79,9 +79,9 @@ const fetchNext = async (pageNumber: number) => {
 };
 const fetchPrev = async (pageNumber: number) => {
   if (results && btn_prev.getAttribute("data-prevbtn") !== "0") {
-    table.removeChild(document.getElementsByTagName("tbody")[0]);
     if (pageNumber == 1) btn_prev.disabled = true;
     if (results![pageNumber]) {
+      table.removeChild(document.getElementsByTagName("tbody")[0]);
       traverseTable(pageNumber);
       btn_next.setAttribute("data-nextbtn", `${pageNumber + 1}`);
       btn_prev.setAttribute("data-prevbtn", `${pageNumber - 1}`);
@@ -89,6 +89,7 @@ const fetchPrev = async (pageNumber: number) => {
     }
     await fetchResource(pageNumber).then(() => {
       if (results) {
+        table.removeChild(document.getElementsByTagName("tbody")[0]);
         traverseTable(pageNumber);
         btn_next.setAttribute("data-nextbtn", `${pageNumber + 1}`);
         btn_prev.setAttribute("data-prevbtn", `${pageNumber - 1}`);
