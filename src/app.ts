@@ -59,20 +59,22 @@ const traverseTable = (n: number): void => {
  */
 const fetchNext = async (pageNumber: number) => {
   if (results) {
+    btn_next.setAttribute("data-nextbtn", `${pageNumber + 1}`);
+    btn_prev.setAttribute("data-prevbtn", `${pageNumber - 1}`);
     if (results![pageNumber]) {
       table.removeChild(document.getElementsByTagName("tbody")[0]);
       traverseTable(pageNumber);
-      btn_next.setAttribute("data-nextbtn", `${pageNumber + 1}`);
-      btn_prev.setAttribute("data-prevbtn", `${pageNumber - 1}`);
+
+      await fetchResource(pageNumber + 1);
       btn_prev.disabled = false;
       return;
     }
+
+    // triggers when the page number is not fetched
     await fetchResource(pageNumber).then(() => {
       if (results) {
         table.removeChild(document.getElementsByTagName("tbody")[0]);
         traverseTable(pageNumber);
-        btn_next.setAttribute("data-nextbtn", `${pageNumber + 1}`);
-        btn_prev.setAttribute("data-prevbtn", `${pageNumber - 1}`);
       }
     });
   }
@@ -83,13 +85,12 @@ const fetchNext = async (pageNumber: number) => {
  * @param pageNumber
  * @returns void
  */
-const fetchPrev = async (pageNumber: number) : Promise<void> => {
+const fetchPrev = async (pageNumber: number): Promise<void> => {
   if (results && btn_prev.getAttribute("data-prevbtn") !== "0") {
-
     // disable previous button when current page is 1
     if (pageNumber == 1) btn_prev.disabled = true;
 
-    // if already page exists call traverseTable 
+    // if page exists call traverseTable
     if (results![pageNumber]) {
       table.removeChild(document.getElementsByTagName("tbody")[0]);
       traverseTable(pageNumber);
