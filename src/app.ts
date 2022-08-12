@@ -1,5 +1,3 @@
-import { MainResponseType, ResponseData } from "./types";
-
 const startApp = async () => {
   // fetch page 1 on-start
   await fetchResource(1).then(() => {
@@ -133,3 +131,25 @@ btn_prev.addEventListener("click", () =>
   fetchPrev(parseInt(btn_prev.getAttribute("data-prevbtn")!))
 );
 document.addEventListener("DOMContentLoaded", startApp);
+
+/**
+ * Type declarations
+ */
+
+type MainResponseType = {
+  info: any;
+  results: ResponseData[];
+};
+type ResponseData = {
+  [key: number]: ResponseDataType[];
+  paging: {
+    next: string;
+    previous: string;
+  };
+};
+type ResponseDataType = {
+  gender: "male" | "female";
+  id: string;
+  row: number;
+  age: number;
+};
